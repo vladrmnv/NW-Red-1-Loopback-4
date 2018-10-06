@@ -27,7 +27,8 @@
     "posttest": "npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/test/**/*.js && npm run posttest",
     "prestart": "npm run build",
-    "start": "ts-node .",
+    "start": "ts-node app",
+    "start:js": "npm run build; node .",
     "prepublishOnly": "npm run test"
   },
   "repository": {
