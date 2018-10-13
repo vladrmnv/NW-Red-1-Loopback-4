@@ -1,6 +1,10 @@
 <p>
     users works!
 </p>
+<form [formGroup]="userService.form" (ngSubmit)="sendForm()" class="full-width">
+    <input type="text" name="email" placeholder="email" formControlName="email" />
+    <button type="submit" [disabled]="userService.form.invalid">Save</button>
+</form>
 <li>
     <ul *ngFor="let user of users">{{user.id}} {{user.firstName}}</ul>
 </li>

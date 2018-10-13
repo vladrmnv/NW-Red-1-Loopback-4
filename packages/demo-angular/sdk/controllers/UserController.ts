@@ -5,9 +5,9 @@
  * undefined
  */
 
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import * as __model from '../model';
 
@@ -54,16 +54,19 @@ export class UserControllerService {
     let queryParams = new HttpParams();
     Object.entries(queryParamBase).forEach(([key, value]) => {
       if (value !== undefined) {
-        if (typeof value === 'string') queryParams = queryParams.set(key, value);
+        if (typeof value === 'string')
+          queryParams = queryParams.set(key, value);
         else queryParams = queryParams.set(key, JSON.stringify(value));
       }
     });
 
-    return this.http.get<__model.NwUser[]>(`/users`, {params: queryParams});
+    return this.http.get<__model.NwUser[]>(`/users`, { params: queryParams });
   }
 
   /** http://undefined/swagger/swagger-ui.html#!/UserController/updateAll */
-  updateAll(params: UpdateAllParams): Observable<__model.UpdateAllGeneratedInlineModel> {
+  updateAll(
+    params: UpdateAllParams,
+  ): Observable<__model.UpdateAllGeneratedInlineModel> {
     const queryParamBase = {
       where: params.where,
     };
@@ -71,7 +74,8 @@ export class UserControllerService {
     let queryParams = new HttpParams();
     Object.entries(queryParamBase).forEach(([key, value]) => {
       if (value !== undefined) {
-        if (typeof value === 'string') queryParams = queryParams.set(key, value);
+        if (typeof value === 'string')
+          queryParams = queryParams.set(key, value);
         else queryParams = queryParams.set(key, JSON.stringify(value));
       }
     });
@@ -81,7 +85,11 @@ export class UserControllerService {
     Object.entries(bodyParams || {}).forEach(([key, value]) => {
       if (value !== undefined) bodyParamsWithoutUndefined[key] = value;
     });
-    return this.http.patch<__model.UpdateAllGeneratedInlineModel>(`/users`, bodyParamsWithoutUndefined, {params: queryParams});
+    return this.http.patch<__model.UpdateAllGeneratedInlineModel>(
+      `/users`,
+      bodyParamsWithoutUndefined,
+      { params: queryParams },
+    );
   }
 
   /** http://undefined/swagger/swagger-ui.html#!/UserController/create */
@@ -103,12 +111,15 @@ export class UserControllerService {
     let queryParams = new HttpParams();
     Object.entries(queryParamBase).forEach(([key, value]) => {
       if (value !== undefined) {
-        if (typeof value === 'string') queryParams = queryParams.set(key, value);
+        if (typeof value === 'string')
+          queryParams = queryParams.set(key, value);
         else queryParams = queryParams.set(key, JSON.stringify(value));
       }
     });
 
-    return this.http.get<__model.CountGeneratedInlineModel>(`/users/count`, {params: queryParams});
+    return this.http.get<__model.CountGeneratedInlineModel>(`/users/count`, {
+      params: queryParams,
+    });
   }
 
   /** http://undefined/swagger/swagger-ui.html#!/UserController/deleteById */
@@ -137,6 +148,9 @@ export class UserControllerService {
     Object.entries(bodyParams || {}).forEach(([key, value]) => {
       if (value !== undefined) bodyParamsWithoutUndefined[key] = value;
     });
-    return this.http.patch<void>(`/users/${pathParams.id}`, bodyParamsWithoutUndefined);
+    return this.http.patch<void>(
+      `/users/${pathParams.id}`,
+      bodyParamsWithoutUndefined,
+    );
   }
 }
