@@ -1,5 +1,6 @@
 {
     "name": "memory",
     "connector": "memory",
-    "localStorage": ""
+    "localStorage": "",
+    "file": "./db/memory.json"
 }

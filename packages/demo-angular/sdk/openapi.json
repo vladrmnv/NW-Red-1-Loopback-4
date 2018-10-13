@@ -1,0 +1,281 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "LoopBack Application",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "create",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "NwUser model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NwUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NwUser"
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "NwUser PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "count": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "style": "deepObject",
+                    "explode": true,
+                    "schema": {
+                        "type": "object"
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NwUser"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "find",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of NwUser model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/NwUser"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "style": "deepObject",
+                    "explode": true,
+                    "schema": {
+                        "properties": {
+                            "where": {
+                                "type": "object"
+                            },
+                            "fields": {
+                                "type": "object"
+                            },
+                            "offset": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "limit": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "skip": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "order": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                }]
+            }
+        },
+        "/users/{id}": {
+            "patch": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NwUser PATCH success"
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NwUser"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                }
+            },
+            "get": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "NwUser model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NwUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }]
+            },
+            "delete": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NwUser DELETE success"
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }]
+            }
+        },
+        "/users/count": {
+            "get": {
+                "x-controller-name": "UserController",
+                "x-operation-name": "count",
+                "tags": [
+                    "UserController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "NwUser model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "count": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "style": "deepObject",
+                    "explode": true,
+                    "schema": {
+                        "type": "object"
+                    }
+                }]
+            }
+        }
+    },
+    "servers": [{
+        "url": "/"
+    }],
+    "components": {
+        "schemas": {
+            "NwUser": {
+                "title": "NwUser",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "firstName",
+                    "email",
+                    "password"
+                ]
+            }
+        }
+    }
+}

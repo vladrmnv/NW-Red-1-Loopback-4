@@ -1,0 +1,11 @@
+{
+  "ids": {
+    "NwUser": 3
+  },
+  "models": {
+    "NwUser": {
+      "1": "{\"firstName\":\"string\",\"email\":\"string\",\"password\":\"string\",\"id\":\"1\"}",
+      "2": "{\"firstName\":\"string\",\"email\":\"string\",\"password\":\"string\",\"id\":\"2\"}"
+    }
+  }
+}
