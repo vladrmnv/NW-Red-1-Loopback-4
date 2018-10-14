@@ -3,7 +3,7 @@ import { UserControllerService } from 'sdk/controllers/UserController';
 import { Subscription } from 'rxjs';
 
 import { INwUser } from 'sdk/model';
-import { NwUser } from '@nw/demo-server/src/models';
+// import { NwUser } from '@nw/demo-server/src/models';
 
 @Component({
   selector: 'nw-users',
@@ -39,10 +39,10 @@ export class UsersComponent implements OnInit {
   }
 
   private initNewUser() {
-    this.newUser = new NwUser({
-      email: 'test@mail.com',
-      firstName: 'Jack',
-      password: '123',
-    });
+    this.newUser = {
+      email: '',
+      firstName: '',
+      password: '',
+    };
   }
 }

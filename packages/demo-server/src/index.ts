@@ -6,7 +6,6 @@ export { DemoServerApplication };
 
 export async function main(options: ApplicationConfig = {}) {
   const app = new DemoServerApplication(options);
-  console.log(AngularClientPath);
   app.static('/app', AngularClientPath);
   await app.boot();
   await app.start();

@@ -1,11 +1,15 @@
 {
   "ids": {
-    "NwUser": 3
+    "NwUser": 3,
+    "Form": 2
   },
   "models": {
     "NwUser": {
       "1": "{\"firstName\":\"string\",\"email\":\"string\",\"password\":\"string\",\"id\":\"1\"}",
       "2": "{\"firstName\":\"string\",\"email\":\"string\",\"password\":\"string\",\"id\":\"2\"}"
+    },
+    "Form": {
+      "userCreate": "{\"key\":\"userCreate\",\"label\":\"Create User\",\"questions\":[{\"key\":\"email\",\"label\":\"Email\",\"value\":\"example@mail.com\"},{\"key\":\"password\",\"label\":\"Password\"},{\"key\":\"firstName\",\"label\":\"First Name\",\"value\":\"Jack\"},{\"key\":\"lastName\",\"label\":\"Last Name\",\"value\":\"Daniels\"}]}"
     }
   }
 }
