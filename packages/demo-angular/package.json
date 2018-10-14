@@ -8,9 +8,10 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
+        "sdk:getspec": "curl localhost:3000/openapi.json > ./sdk/openapi.json",
         "sdk:convert": "api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=json --order=alpha sdk/openapi.json > sdk/swagger.json; sed -i.bak s/x-operation-name/operationId/g sdk/swagger.json;     rm sdk/swagger.json.bak",
         "sdk:generate": "./node_modules/.bin/swagger-angular-generator -s sdk/swagger.json -d sdk",
-        "sdk": "npm run sdk:convert; npm run sdk:generate"
+        "sdk": "npm run sdk:getspec; npm run sdk:convert; npm run sdk:generate"
     },
     "private": true,
     "dependencies": {

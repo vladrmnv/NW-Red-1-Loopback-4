@@ -5,7 +5,7 @@
  * undefined
  */
 
-export interface INwUser {
+export interface NwUser {
   email: string;
   firstName: string;
   id?: string;

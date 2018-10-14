@@ -5,6 +5,10 @@
  * undefined
  */
 
+export * from './defs/Form';
 export * from './defs/NwUser';
+export * from './defs/Question';
+export * from './defs/UpdateAllGeneratedInlineModel';
+export * from './defs/CountGeneratedInlineModel';
 export * from './defs/UpdateAllGeneratedInlineModel';
 export * from './defs/CountGeneratedInlineModel';

@@ -17,11 +17,11 @@ export interface FindParams {
 
 export interface UpdateAllParams {
   where?: object;
-  body?: __model.NwUser;
+  body?: __model.Form;
 }
 
 export interface CreateParams {
-  body?: __model.NwUser;
+  body?: __model.Form;
 }
 
 export interface CountParams {
@@ -38,15 +38,15 @@ export interface FindByIdParams {
 
 export interface UpdateByIdParams {
   id: string;
-  body?: __model.NwUser;
+  body?: __model.Form;
 }
 
 @Injectable()
-export class UserControllerService {
+export class FormControllerService {
   constructor(private http: HttpClient) {}
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/find */
-  find(params: FindParams): Observable<__model.NwUser[]> {
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/find */
+  find(params: FindParams): Observable<__model.Form[]> {
     const queryParamBase = {
       filter: params.filter,
     };
@@ -59,10 +59,10 @@ export class UserControllerService {
       }
     });
 
-    return this.http.get<__model.NwUser[]>(`/users`, {params: queryParams});
+    return this.http.get<__model.Form[]>(`/forms`, {params: queryParams});
   }
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/updateAll */
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/updateAll */
   updateAll(params: UpdateAllParams): Observable<__model.UpdateAllGeneratedInlineModel> {
     const queryParamBase = {
       where: params.where,
@@ -81,20 +81,20 @@ export class UserControllerService {
     Object.entries(bodyParams || {}).forEach(([key, value]) => {
       if (value !== undefined) bodyParamsWithoutUndefined[key] = value;
     });
-    return this.http.patch<__model.UpdateAllGeneratedInlineModel>(`/users`, bodyParamsWithoutUndefined, {params: queryParams});
+    return this.http.patch<__model.UpdateAllGeneratedInlineModel>(`/forms`, bodyParamsWithoutUndefined, {params: queryParams});
   }
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/create */
-  create(params: CreateParams): Observable<__model.NwUser> {
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/create */
+  create(params: CreateParams): Observable<__model.Form> {
     const bodyParams = params.body;
     const bodyParamsWithoutUndefined: any = {};
     Object.entries(bodyParams || {}).forEach(([key, value]) => {
       if (value !== undefined) bodyParamsWithoutUndefined[key] = value;
     });
-    return this.http.post<__model.NwUser>(`/users`, bodyParamsWithoutUndefined);
+    return this.http.post<__model.Form>(`/forms`, bodyParamsWithoutUndefined);
   }
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/count */
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/count */
   count(params: CountParams): Observable<__model.CountGeneratedInlineModel> {
     const queryParamBase = {
       where: params.where,
@@ -108,26 +108,26 @@ export class UserControllerService {
       }
     });
 
-    return this.http.get<__model.CountGeneratedInlineModel>(`/users/count`, {params: queryParams});
+    return this.http.get<__model.CountGeneratedInlineModel>(`/forms/count`, {params: queryParams});
   }
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/deleteById */
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/deleteById */
   deleteById(params: DeleteByIdParams): Observable<void> {
     const pathParams = {
       id: params.id,
     };
-    return this.http.delete<void>(`/users/${pathParams.id}`);
+    return this.http.delete<void>(`/forms/${pathParams.id}`);
   }
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/findById */
-  findById(params: FindByIdParams): Observable<__model.NwUser> {
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/findById */
+  findById(params: FindByIdParams): Observable<__model.Form> {
     const pathParams = {
       id: params.id,
     };
-    return this.http.get<__model.NwUser>(`/users/${pathParams.id}`);
+    return this.http.get<__model.Form>(`/forms/${pathParams.id}`);
   }
 
-  /** http://undefined/swagger/swagger-ui.html#!/UserController/updateById */
+  /** http://undefined/swagger/swagger-ui.html#!/FormController/updateById */
   updateById(params: UpdateByIdParams): Observable<void> {
     const pathParams = {
       id: params.id,
@@ -137,6 +137,6 @@ export class UserControllerService {
     Object.entries(bodyParams || {}).forEach(([key, value]) => {
       if (value !== undefined) bodyParamsWithoutUndefined[key] = value;
     });
-    return this.http.patch<void>(`/users/${pathParams.id}`, bodyParamsWithoutUndefined);
+    return this.http.patch<void>(`/forms/${pathParams.id}`, bodyParamsWithoutUndefined);
   }
 }

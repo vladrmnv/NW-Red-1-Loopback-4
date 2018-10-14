@@ -1,239 +1,551 @@
 {
-    "definitions": {
-        "NwUser": {
-            "properties": {
-                "email": {
-                    "type": "string"
-                },
-                "firstName": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "password": {
-                    "type": "string"
+  "definitions": {
+    "Form": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "questions": {
+          "items": {
+            "$ref": "#/definitions/Question"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "key"
+      ],
+      "title": "Form"
+    },
+    "NwUser": {
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstName",
+        "email",
+        "password"
+      ],
+      "title": "NwUser"
+    },
+    "Question": {
+      "properties": {
+        "formId": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "label"
+      ],
+      "title": "Question"
+    }
+  },
+  "info": {
+    "title": "LoopBack Application",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/forms": {
+      "get": {
+        "parameters": [
+          {
+            "explode": true,
+            "in": "query",
+            "name": "filter",
+            "style": "deepObject",
+            "type": "object"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Form model instances",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Form"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "find"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "explode": true,
+            "in": "query",
+            "name": "where",
+            "style": "deepObject",
+            "type": "object"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Form"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Form PATCH success count",
+            "schema": {
+              "properties": {
+                "count": {
+                  "type": "number"
                 }
-            },
-            "required": [
-                "firstName",
-                "email",
-                "password"
-            ],
-            "title": "NwUser"
-        }
-    },
-    "info": {
-        "title": "LoopBack Application",
-        "version": "1.0.0"
-    },
-    "paths": {
-        "/users": {
-            "get": {
-                "parameters": [{
-                    "explode": true,
-                    "in": "query",
-                    "name": "filter",
-                    "style": "deepObject",
-                    "type": "object"
-                }],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Array of NwUser model instances",
-                        "schema": {
-                            "items": {
-                                "$ref": "#/definitions/NwUser"
-                            },
-                            "type": "array"
-                        }
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "find"
-            },
-            "patch": {
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "explode": true,
-                        "in": "query",
-                        "name": "where",
-                        "style": "deepObject",
-                        "type": "object"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "$ref": "#/definitions/NwUser"
-                        }
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "NwUser PATCH success count",
-                        "schema": {
-                            "properties": {
-                                "count": {
-                                    "type": "number"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "updateAll"
-            },
-            "post": {
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "in": "body",
-                    "name": "body",
-                    "schema": {
-                        "$ref": "#/definitions/NwUser"
-                    }
-                }],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "NwUser model instance",
-                        "schema": {
-                            "$ref": "#/definitions/NwUser"
-                        }
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "create"
+              },
+              "type": "object"
             }
+          }
         },
-        "/users/count": {
-            "get": {
-                "parameters": [{
-                    "explode": true,
-                    "in": "query",
-                    "name": "where",
-                    "style": "deepObject",
-                    "type": "object"
-                }],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "NwUser model count",
-                        "schema": {
-                            "properties": {
-                                "count": {
-                                    "type": "number"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "count"
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "updateAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Form"
             }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Form model instance",
+            "schema": {
+              "$ref": "#/definitions/Form"
+            }
+          }
         },
-        "/users/{id}": {
-            "delete": {
-                "parameters": [{
-                    "in": "path",
-                    "name": "id",
-                    "required": true,
-                    "type": "string"
-                }],
-                "responses": {
-                    "204": {
-                        "description": "NwUser DELETE success"
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "deleteById"
-            },
-            "get": {
-                "parameters": [{
-                    "in": "path",
-                    "name": "id",
-                    "required": true,
-                    "type": "string"
-                }],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "NwUser model instance",
-                        "schema": {
-                            "$ref": "#/definitions/NwUser"
-                        }
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "findById"
-            },
-            "patch": {
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "$ref": "#/definitions/NwUser"
-                        },
-                        "x-parameter-index": 1
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "NwUser PATCH success"
-                    }
-                },
-                "tags": [
-                    "UserController"
-                ],
-                "x-controller-name": "UserController",
-                "operationId": "updateById"
-            }
-        }
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "create"
+      }
     },
-    "swagger": "2.0",
-    "x-components": {}
+    "/forms/count": {
+      "get": {
+        "parameters": [
+          {
+            "explode": true,
+            "in": "query",
+            "name": "where",
+            "style": "deepObject",
+            "type": "object"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Form model count",
+            "schema": {
+              "properties": {
+                "count": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "count"
+      }
+    },
+    "/forms/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Form DELETE success"
+          }
+        },
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "deleteById"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Form model instance",
+            "schema": {
+              "$ref": "#/definitions/Form"
+            }
+          }
+        },
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "findById"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Form"
+            },
+            "x-parameter-index": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Form PATCH success"
+          }
+        },
+        "tags": [
+          "FormController"
+        ],
+        "x-controller-name": "FormController",
+        "operationId": "updateById"
+      }
+    },
+    "/forms/{key}/questions": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Question"
+            },
+            "x-parameter-index": 1
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Create questions for a form",
+            "schema": {
+              "$ref": "#/definitions/Question"
+            },
+            "tags": [
+              "forms"
+            ]
+          }
+        },
+        "tags": [
+          "FormQuestionsController"
+        ],
+        "x-controller-name": "FormQuestionsController",
+        "operationId": "createQuestions"
+      }
+    },
+    "/users": {
+      "get": {
+        "parameters": [
+          {
+            "explode": true,
+            "in": "query",
+            "name": "filter",
+            "style": "deepObject",
+            "type": "object"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of NwUser model instances",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/NwUser"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "find"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "explode": true,
+            "in": "query",
+            "name": "where",
+            "style": "deepObject",
+            "type": "object"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NwUser"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "NwUser PATCH success count",
+            "schema": {
+              "properties": {
+                "count": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "updateAll"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NwUser"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "NwUser model instance",
+            "schema": {
+              "$ref": "#/definitions/NwUser"
+            }
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "create"
+      }
+    },
+    "/users/count": {
+      "get": {
+        "parameters": [
+          {
+            "explode": true,
+            "in": "query",
+            "name": "where",
+            "style": "deepObject",
+            "type": "object"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "NwUser model count",
+            "schema": {
+              "properties": {
+                "count": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "count"
+      }
+    },
+    "/users/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "NwUser DELETE success"
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "deleteById"
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "NwUser model instance",
+            "schema": {
+              "$ref": "#/definitions/NwUser"
+            }
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "findById"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NwUser"
+            },
+            "x-parameter-index": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "NwUser PATCH success"
+          }
+        },
+        "tags": [
+          "UserController"
+        ],
+        "x-controller-name": "UserController",
+        "operationId": "updateById"
+      }
+    }
+  },
+  "swagger": "2.0",
+  "x-components": {}
 }

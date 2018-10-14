@@ -6,23 +6,22 @@
  */
 
 import {Action} from '@ngrx/store';
-import {FindByIdParams} from '../../../../controllers/UserController';
-import * as __model from '../../../../model';
+import {UpdateByIdParams} from '../../../../controllers/FormController';
 
 export enum Actions {
-  START = '[UserController findById] Start',
-  SUCCESS = '[UserController findById] Success',
-  ERROR = '[UserController findById] Error',
+  START = '[FormController updateById] Start',
+  SUCCESS = '[FormController updateById] Success',
+  ERROR = '[FormController updateById] Error',
 }
 
 export class Start implements Action {
   readonly type = Actions.START;
-  constructor(public payload: FindByIdParams) {}
+  constructor(public payload: UpdateByIdParams) {}
 }
 
 export class Success implements Action {
   readonly type = Actions.SUCCESS;
-  constructor(public payload: __model.NwUser) {}
+  constructor(public payload: void) {}
 }
 
 export class Error implements Action {
@@ -30,4 +29,4 @@ export class Error implements Action {
   constructor(public payload: string) {}
 }
 
-export type FindByIdAction = Start | Success | Error;
+export type UpdateByIdAction = Start | Success | Error;

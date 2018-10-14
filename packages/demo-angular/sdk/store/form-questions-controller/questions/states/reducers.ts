@@ -10,24 +10,24 @@ import {createFeatureSelector} from '@ngrx/store';
 import * as __model from '../../../../model';
 import * as actions from './actions';
 
-export interface FindState {
-  data: __model.NwUser[] | null;
+export interface QuestionsState {
+  data: __model.Question | null;
   loading: boolean;
   error: string | null;
 }
 
-export const initialFindState: FindState = {
+export const initialQuestionsState: QuestionsState = {
   data: null,
   loading: false,
   error: null,
 };
 
-export const selectorName = 'UserController_Find';
-export const getFindStateSelector = createFeatureSelector<FindState>(selectorName);
+export const selectorName = 'FormQuestionsController_Questions';
+export const getQuestionsStateSelector = createFeatureSelector<QuestionsState>(selectorName);
 
-export function FindReducer(
-  state: FindState = initialFindState,
-  action: actions.FindAction): FindState {
+export function QuestionsReducer(
+  state: QuestionsState = initialQuestionsState,
+  action: actions.QuestionsAction): QuestionsState {
   switch (action.type) {
     case actions.Actions.START: return {...state, loading: true, error: null};
     case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};

@@ -12,14 +12,14 @@ import {Actions, Effect} from '@ngrx/effects';
 import {of} from 'rxjs/observable/of';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {UserControllerService} from '../../../../controllers/UserController';
+import {FormQuestionsControllerService} from '../../../../controllers/FormQuestionsController';
 import * as actions from './actions';
 
 @Injectable()
-export class CreateEffects {
+export class QuestionsEffects {
   @Effect()
-  Create = this.storeActions.ofType<actions.Start>(actions.Actions.START).pipe(
-    switchMap((action: actions.Start) => this.usercontrollerService.create(action.payload)
+  Questions = this.storeActions.ofType<actions.Start>(actions.Actions.START).pipe(
+    switchMap((action: actions.Start) => this.formquestionscontrollerService.questions(action.payload)
       .pipe(
         map(result => new actions.Success(result)),
         catchError((error: HttpErrorResponse) => of(new actions.Error(error.message))),
@@ -29,6 +29,6 @@ export class CreateEffects {
 
   constructor(
     private storeActions: Actions,
-    private usercontrollerService: UserControllerService,
+    private formquestionscontrollerService: FormQuestionsControllerService,
   ) {}
 }

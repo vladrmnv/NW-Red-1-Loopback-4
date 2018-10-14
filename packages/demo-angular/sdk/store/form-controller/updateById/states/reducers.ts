@@ -7,27 +7,26 @@
 
 import {createFeatureSelector} from '@ngrx/store';
 
-import * as __model from '../../../../model';
 import * as actions from './actions';
 
-export interface FindState {
-  data: __model.NwUser[] | null;
+export interface UpdateByIdState {
+  data: void | null;
   loading: boolean;
   error: string | null;
 }
 
-export const initialFindState: FindState = {
+export const initialUpdateByIdState: UpdateByIdState = {
   data: null,
   loading: false,
   error: null,
 };
 
-export const selectorName = 'UserController_Find';
-export const getFindStateSelector = createFeatureSelector<FindState>(selectorName);
+export const selectorName = 'FormController_UpdateById';
+export const getUpdateByIdStateSelector = createFeatureSelector<UpdateByIdState>(selectorName);
 
-export function FindReducer(
-  state: FindState = initialFindState,
-  action: actions.FindAction): FindState {
+export function UpdateByIdReducer(
+  state: UpdateByIdState = initialUpdateByIdState,
+  action: actions.UpdateByIdAction): UpdateByIdState {
   switch (action.type) {
     case actions.Actions.START: return {...state, loading: true, error: null};
     case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};

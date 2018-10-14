@@ -11,7 +11,7 @@ import * as __model from '../../../../model';
 import * as actions from './actions';
 
 export interface FindState {
-  data: __model.NwUser[] | null;
+  data: __model.Form[] | null;
   loading: boolean;
   error: string | null;
 }
@@ -22,7 +22,7 @@ export const initialFindState: FindState = {
   error: null,
 };
 
-export const selectorName = 'UserController_Find';
+export const selectorName = 'FormController_Find';
 export const getFindStateSelector = createFeatureSelector<FindState>(selectorName);
 
 export function FindReducer(
