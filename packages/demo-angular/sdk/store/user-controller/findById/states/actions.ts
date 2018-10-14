@@ -5,8 +5,8 @@
  * undefined
  */
 
-import {Action} from '@ngrx/store';
-import {FindByIdParams} from '../../../../controllers/UserController';
+import { Action } from '@ngrx/store';
+import { FindByIdParams } from '../../../../controllers/UserController';
 import * as __model from '../../../../model';
 
 export enum Actions {
@@ -22,7 +22,7 @@ export class Start implements Action {
 
 export class Success implements Action {
   readonly type = Actions.SUCCESS;
-  constructor(public payload: __model.NwUser) {}
+  constructor(public payload: __model.INwUser) {}
 }
 
 export class Error implements Action {

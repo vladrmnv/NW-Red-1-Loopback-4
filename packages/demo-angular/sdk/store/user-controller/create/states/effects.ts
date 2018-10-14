@@ -21,7 +21,7 @@ export class CreateEffects {
   Create = this.storeActions.ofType<actions.Start>(actions.Actions.START).pipe(
     switchMap((action: actions.Start) =>
       this.usercontrollerService.create(action.payload).pipe(
-        map(result => new actions.Success(result)),
+        map((result: any) => new actions.Success(result)),
         catchError((error: HttpErrorResponse) =>
           of(new actions.Error(error.message)),
         ),
