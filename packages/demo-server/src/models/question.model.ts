@@ -1,5 +1,9 @@
-import { Entity, model, property, belongsTo } from '@loopback/repository';
+import { Entity, model, property } from '@loopback/repository';
 import { Form } from './form.model';
+
+enum QUESTION_CONTROL_TYPES {
+  textbox = 'textbox',
+}
 
 @model()
 export class Question extends Entity {
@@ -20,6 +24,11 @@ export class Question extends Entity {
     type: 'string',
   })
   value?: string;
+
+  @property({
+    type: 'string',
+  })
+  controlType: QUESTION_CONTROL_TYPES;
 
   @property({
     type: 'string',
