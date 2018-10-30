@@ -4,10 +4,10 @@ import { UsersComponent } from './users.component';
 import { RouterModule } from '@angular/router';
 import { UserControllerService } from 'sdk/controllers/UserController';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, HttpClientModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
   declarations: [UsersComponent],
   providers: [UserControllerService],
   exports: [UsersComponent],

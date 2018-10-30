@@ -6,8 +6,10 @@
  */
 
 export interface Question {
+  controlType?: string;
   formId?: string;
   key: string;
   label: string;
+  required?: boolean;
   value?: string;
 }

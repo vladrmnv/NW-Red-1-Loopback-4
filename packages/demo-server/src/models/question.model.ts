@@ -1,5 +1,4 @@
 import { Entity, model, property } from '@loopback/repository';
-import { Form } from './form.model';
 
 enum QUESTION_CONTROL_TYPES {
   textbox = 'textbox',
@@ -34,6 +33,11 @@ export class Question extends Entity {
     type: 'string',
   })
   formId?: string;
+
+  @property({
+    type: 'boolean',
+  })
+  required: boolean;
 
   constructor(data?: Partial<Question>) {
     super(data);

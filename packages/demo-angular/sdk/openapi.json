@@ -618,8 +618,14 @@
           "value": {
             "type": "string"
           },
+          "controlType": {
+            "type": "string"
+          },
           "formId": {
             "type": "string"
+          },
+          "required": {
+            "type": "boolean"
           }
         },
         "required": [

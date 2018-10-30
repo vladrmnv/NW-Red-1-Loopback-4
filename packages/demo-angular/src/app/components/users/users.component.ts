@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserControllerService } from 'sdk/controllers/UserController';
 import { Subscription } from 'rxjs';
 
-import { INwUser } from 'sdk/model';
+import { NwUser } from 'sdk/model';
 // import { NwUser } from '@nw/demo-server/src/models';
 
 @Component({
@@ -15,8 +15,8 @@ export class UsersComponent implements OnInit {
     this.initNewUser();
   }
 
-  public users: INwUser[];
-  public newUser: INwUser;
+  public users: NwUser[];
+  public newUser: NwUser;
   ngOnInit() {
     this.find();
   }
@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  create(user: INwUser) {
+  create(user: NwUser) {
     this.userService
       .create({
         body: user,
